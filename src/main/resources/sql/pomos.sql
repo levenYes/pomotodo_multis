@@ -2,7 +2,7 @@ create table pomos(
    uuid VARCHAR(100) NOT NULL ,
    created_at DATETIME NOT NULL,
    updated_at DATETIME NOT NULL,
-   description VARCHAR(100) NOT NULL,
+   description VARCHAR(100) CHARACTER SET  utf8 NOT NULL,
    started_at DATETIME NOT NULL,
    ended_at DATETIME NOT NULL,
    local_started_at DATETIME NOT NULL,
