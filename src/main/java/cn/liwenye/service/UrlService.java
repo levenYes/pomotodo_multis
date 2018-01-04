@@ -1,11 +1,20 @@
 package cn.liwenye.service;
 
+import cn.liwenye.bean.Pomos;
+import cn.liwenye.dao.PomosMapper;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +23,9 @@ import java.util.Map;
  */
 @Service
 public class UrlService {
+    @Autowired
+    PomosMapper pomosMapper;
+
     public  String sendGet(String url) {
         String result = "";
         BufferedReader in = null;
@@ -54,5 +66,55 @@ public class UrlService {
             }
         }
         return result;
+    }
+
+    public void importData(String data){
+        List<Pomos> result = new ArrayList<Pomos>();
+        JSONArray array = JSONArray.fromObject(data);
+        for (int i = 0; i < array.size(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            Pomos pomos = (Pomos) JSONObject.toBean(object, Pomos.class);
+            //created_at
+            String strCreatedAt = pomos.getCreated_at();
+            Date dateCreatedAt = convertDate(strCreatedAt);
+            pomos.setCreatedAt(dateCreatedAt);
+            //updated_at
+            String strUpdatedAt = pomos.getUpdated_at();
+            Date dateUpdatedAt = convertDate(strUpdatedAt);
+            pomos.setUpdatedAt(dateUpdatedAt);
+            //started_at
+            String strStartedAt = pomos.getStarted_at();
+            Date dateStartedAt = convertDate(strStartedAt);
+            pomos.setStartedAt(dateStartedAt);
+            //ended_at
+            String strEndedAt = pomos.getEnded_at();
+            Date dateEndedAt = convertDate(strEndedAt);
+            pomos.setEndedAt(dateEndedAt);
+            //local_started_at
+            String strLocalStartedAt = pomos.getLocal_started_at();
+            Date dateLocalStartedAt = convertDate(strLocalStartedAt);
+            pomos.setLocalStartedAt(dateLocalStartedAt);
+            //local_ended_at
+            String strLocalEndedAt = pomos.getLocal_ended_at();
+            Date dateLocalEndedAt = convertDate(strLocalEndedAt);
+            pomos.setLocalEndedAt(dateLocalEndedAt);
+            System.out.println(pomos.getCreatedAt());
+            result.add(pomos);
+        }
+        for (int i = 0; i< 10 ; i++){
+           pomosMapper.insert(result.get(i));
+        }
+    }
+
+    Date convertDate(String strDate){
+        try {
+            strDate = strDate.substring(0,22);
+            strDate = strDate.replace("T"," ");
+            Date date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS").parse(strDate);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -9,6 +9,10 @@ public class Pomos {
 
     private Date updatedAt;
 
+    private String created_at;
+
+    private String updated_at;
+
     private String description;
 
     private Date startedAt;
@@ -17,7 +21,63 @@ public class Pomos {
 
     private Date localStartedAt;
 
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
+    }
+
+    public String getStarted_at() {
+        return started_at;
+    }
+
+    public void setStarted_at(String started_at) {
+        this.started_at = started_at;
+    }
+
+    public String getEnded_at() {
+        return ended_at;
+    }
+
+    public void setEnded_at(String ended_at) {
+        this.ended_at = ended_at;
+    }
+
+    public String getLocal_started_at() {
+        return local_started_at;
+    }
+
+    public void setLocal_started_at(String local_started_at) {
+        this.local_started_at = local_started_at;
+    }
+
+    public String getLocal_ended_at() {
+        return local_ended_at;
+    }
+
+    public void setLocal_ended_at(String local_ended_at) {
+        this.local_ended_at = local_ended_at;
+    }
+
     private Date localEndedAt;
+
+    private String started_at;
+
+    private String ended_at;
+
+    private String local_started_at;
+
+    private String local_ended_at;
 
     private Integer length;
 

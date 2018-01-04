@@ -2,7 +2,6 @@ package cn.liwenye.bean;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class PomosExample {
@@ -106,32 +105,6 @@ public class PomosExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andUuidIsNull() {
             addCriterion("uuid is null");
             return (Criteria) this;
@@ -213,52 +186,52 @@ public class PomosExample {
         }
 
         public Criteria andCreatedAtEqualTo(Date value) {
-            addCriterionForJDBCDate("created_at =", value, "createdAt");
+            addCriterion("created_at =", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtNotEqualTo(Date value) {
-            addCriterionForJDBCDate("created_at <>", value, "createdAt");
+            addCriterion("created_at <>", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtGreaterThan(Date value) {
-            addCriterionForJDBCDate("created_at >", value, "createdAt");
+            addCriterion("created_at >", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("created_at >=", value, "createdAt");
+            addCriterion("created_at >=", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtLessThan(Date value) {
-            addCriterionForJDBCDate("created_at <", value, "createdAt");
+            addCriterion("created_at <", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("created_at <=", value, "createdAt");
+            addCriterion("created_at <=", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtIn(List<Date> values) {
-            addCriterionForJDBCDate("created_at in", values, "createdAt");
+            addCriterion("created_at in", values, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtNotIn(List<Date> values) {
-            addCriterionForJDBCDate("created_at not in", values, "createdAt");
+            addCriterion("created_at not in", values, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("created_at between", value1, value2, "createdAt");
+            addCriterion("created_at between", value1, value2, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("created_at not between", value1, value2, "createdAt");
+            addCriterion("created_at not between", value1, value2, "createdAt");
             return (Criteria) this;
         }
 
@@ -273,52 +246,52 @@ public class PomosExample {
         }
 
         public Criteria andUpdatedAtEqualTo(Date value) {
-            addCriterionForJDBCDate("updated_at =", value, "updatedAt");
+            addCriterion("updated_at =", value, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtNotEqualTo(Date value) {
-            addCriterionForJDBCDate("updated_at <>", value, "updatedAt");
+            addCriterion("updated_at <>", value, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtGreaterThan(Date value) {
-            addCriterionForJDBCDate("updated_at >", value, "updatedAt");
+            addCriterion("updated_at >", value, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("updated_at >=", value, "updatedAt");
+            addCriterion("updated_at >=", value, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtLessThan(Date value) {
-            addCriterionForJDBCDate("updated_at <", value, "updatedAt");
+            addCriterion("updated_at <", value, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("updated_at <=", value, "updatedAt");
+            addCriterion("updated_at <=", value, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtIn(List<Date> values) {
-            addCriterionForJDBCDate("updated_at in", values, "updatedAt");
+            addCriterion("updated_at in", values, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtNotIn(List<Date> values) {
-            addCriterionForJDBCDate("updated_at not in", values, "updatedAt");
+            addCriterion("updated_at not in", values, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("updated_at between", value1, value2, "updatedAt");
+            addCriterion("updated_at between", value1, value2, "updatedAt");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedAtNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("updated_at not between", value1, value2, "updatedAt");
+            addCriterion("updated_at not between", value1, value2, "updatedAt");
             return (Criteria) this;
         }
 
@@ -403,52 +376,52 @@ public class PomosExample {
         }
 
         public Criteria andStartedAtEqualTo(Date value) {
-            addCriterionForJDBCDate("started_at =", value, "startedAt");
+            addCriterion("started_at =", value, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtNotEqualTo(Date value) {
-            addCriterionForJDBCDate("started_at <>", value, "startedAt");
+            addCriterion("started_at <>", value, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtGreaterThan(Date value) {
-            addCriterionForJDBCDate("started_at >", value, "startedAt");
+            addCriterion("started_at >", value, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("started_at >=", value, "startedAt");
+            addCriterion("started_at >=", value, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtLessThan(Date value) {
-            addCriterionForJDBCDate("started_at <", value, "startedAt");
+            addCriterion("started_at <", value, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("started_at <=", value, "startedAt");
+            addCriterion("started_at <=", value, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtIn(List<Date> values) {
-            addCriterionForJDBCDate("started_at in", values, "startedAt");
+            addCriterion("started_at in", values, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtNotIn(List<Date> values) {
-            addCriterionForJDBCDate("started_at not in", values, "startedAt");
+            addCriterion("started_at not in", values, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("started_at between", value1, value2, "startedAt");
+            addCriterion("started_at between", value1, value2, "startedAt");
             return (Criteria) this;
         }
 
         public Criteria andStartedAtNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("started_at not between", value1, value2, "startedAt");
+            addCriterion("started_at not between", value1, value2, "startedAt");
             return (Criteria) this;
         }
 
@@ -463,52 +436,52 @@ public class PomosExample {
         }
 
         public Criteria andEndedAtEqualTo(Date value) {
-            addCriterionForJDBCDate("ended_at =", value, "endedAt");
+            addCriterion("ended_at =", value, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtNotEqualTo(Date value) {
-            addCriterionForJDBCDate("ended_at <>", value, "endedAt");
+            addCriterion("ended_at <>", value, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtGreaterThan(Date value) {
-            addCriterionForJDBCDate("ended_at >", value, "endedAt");
+            addCriterion("ended_at >", value, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ended_at >=", value, "endedAt");
+            addCriterion("ended_at >=", value, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtLessThan(Date value) {
-            addCriterionForJDBCDate("ended_at <", value, "endedAt");
+            addCriterion("ended_at <", value, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ended_at <=", value, "endedAt");
+            addCriterion("ended_at <=", value, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtIn(List<Date> values) {
-            addCriterionForJDBCDate("ended_at in", values, "endedAt");
+            addCriterion("ended_at in", values, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtNotIn(List<Date> values) {
-            addCriterionForJDBCDate("ended_at not in", values, "endedAt");
+            addCriterion("ended_at not in", values, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ended_at between", value1, value2, "endedAt");
+            addCriterion("ended_at between", value1, value2, "endedAt");
             return (Criteria) this;
         }
 
         public Criteria andEndedAtNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ended_at not between", value1, value2, "endedAt");
+            addCriterion("ended_at not between", value1, value2, "endedAt");
             return (Criteria) this;
         }
 
@@ -523,52 +496,52 @@ public class PomosExample {
         }
 
         public Criteria andLocalStartedAtEqualTo(Date value) {
-            addCriterionForJDBCDate("local_started_at =", value, "localStartedAt");
+            addCriterion("local_started_at =", value, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtNotEqualTo(Date value) {
-            addCriterionForJDBCDate("local_started_at <>", value, "localStartedAt");
+            addCriterion("local_started_at <>", value, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtGreaterThan(Date value) {
-            addCriterionForJDBCDate("local_started_at >", value, "localStartedAt");
+            addCriterion("local_started_at >", value, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("local_started_at >=", value, "localStartedAt");
+            addCriterion("local_started_at >=", value, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtLessThan(Date value) {
-            addCriterionForJDBCDate("local_started_at <", value, "localStartedAt");
+            addCriterion("local_started_at <", value, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("local_started_at <=", value, "localStartedAt");
+            addCriterion("local_started_at <=", value, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtIn(List<Date> values) {
-            addCriterionForJDBCDate("local_started_at in", values, "localStartedAt");
+            addCriterion("local_started_at in", values, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtNotIn(List<Date> values) {
-            addCriterionForJDBCDate("local_started_at not in", values, "localStartedAt");
+            addCriterion("local_started_at not in", values, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("local_started_at between", value1, value2, "localStartedAt");
+            addCriterion("local_started_at between", value1, value2, "localStartedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalStartedAtNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("local_started_at not between", value1, value2, "localStartedAt");
+            addCriterion("local_started_at not between", value1, value2, "localStartedAt");
             return (Criteria) this;
         }
 
@@ -583,52 +556,52 @@ public class PomosExample {
         }
 
         public Criteria andLocalEndedAtEqualTo(Date value) {
-            addCriterionForJDBCDate("local_ended_at =", value, "localEndedAt");
+            addCriterion("local_ended_at =", value, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtNotEqualTo(Date value) {
-            addCriterionForJDBCDate("local_ended_at <>", value, "localEndedAt");
+            addCriterion("local_ended_at <>", value, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtGreaterThan(Date value) {
-            addCriterionForJDBCDate("local_ended_at >", value, "localEndedAt");
+            addCriterion("local_ended_at >", value, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("local_ended_at >=", value, "localEndedAt");
+            addCriterion("local_ended_at >=", value, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtLessThan(Date value) {
-            addCriterionForJDBCDate("local_ended_at <", value, "localEndedAt");
+            addCriterion("local_ended_at <", value, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("local_ended_at <=", value, "localEndedAt");
+            addCriterion("local_ended_at <=", value, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtIn(List<Date> values) {
-            addCriterionForJDBCDate("local_ended_at in", values, "localEndedAt");
+            addCriterion("local_ended_at in", values, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtNotIn(List<Date> values) {
-            addCriterionForJDBCDate("local_ended_at not in", values, "localEndedAt");
+            addCriterion("local_ended_at not in", values, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("local_ended_at between", value1, value2, "localEndedAt");
+            addCriterion("local_ended_at between", value1, value2, "localEndedAt");
             return (Criteria) this;
         }
 
         public Criteria andLocalEndedAtNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("local_ended_at not between", value1, value2, "localEndedAt");
+            addCriterion("local_ended_at not between", value1, value2, "localEndedAt");
             return (Criteria) this;
         }
 

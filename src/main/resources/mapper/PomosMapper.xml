@@ -3,13 +3,13 @@
 <mapper namespace="cn.liwenye.dao.PomosMapper">
   <resultMap id="BaseResultMap" type="cn.liwenye.bean.Pomos">
     <result column="uuid" jdbcType="VARCHAR" property="uuid" />
-    <result column="created_at" jdbcType="DATE" property="createdAt" />
-    <result column="updated_at" jdbcType="DATE" property="updatedAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="started_at" jdbcType="DATE" property="startedAt" />
-    <result column="ended_at" jdbcType="DATE" property="endedAt" />
-    <result column="local_started_at" jdbcType="DATE" property="localStartedAt" />
-    <result column="local_ended_at" jdbcType="DATE" property="localEndedAt" />
+    <result column="started_at" jdbcType="TIMESTAMP" property="startedAt" />
+    <result column="ended_at" jdbcType="TIMESTAMP" property="endedAt" />
+    <result column="local_started_at" jdbcType="TIMESTAMP" property="localStartedAt" />
+    <result column="local_ended_at" jdbcType="TIMESTAMP" property="localEndedAt" />
     <result column="length" jdbcType="INTEGER" property="length" />
     <result column="abandoned" jdbcType="BIT" property="abandoned" />
     <result column="manual" jdbcType="BIT" property="manual" />
@@ -101,9 +101,9 @@
       description, started_at, ended_at, 
       local_started_at, local_ended_at, length, 
       abandoned, manual)
-    values (#{uuid,jdbcType=VARCHAR}, #{createdAt,jdbcType=DATE}, #{updatedAt,jdbcType=DATE}, 
-      #{description,jdbcType=VARCHAR}, #{startedAt,jdbcType=DATE}, #{endedAt,jdbcType=DATE}, 
-      #{localStartedAt,jdbcType=DATE}, #{localEndedAt,jdbcType=DATE}, #{length,jdbcType=INTEGER}, 
+    values (#{uuid,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR}, #{startedAt,jdbcType=TIMESTAMP}, #{endedAt,jdbcType=TIMESTAMP}, 
+      #{localStartedAt,jdbcType=TIMESTAMP}, #{localEndedAt,jdbcType=TIMESTAMP}, #{length,jdbcType=INTEGER}, 
       #{abandoned,jdbcType=BIT}, #{manual,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="cn.liwenye.bean.Pomos">
@@ -148,25 +148,25 @@
         #{uuid,jdbcType=VARCHAR},
       </if>
       <if test="createdAt != null">
-        #{createdAt,jdbcType=DATE},
+        #{createdAt,jdbcType=TIMESTAMP},
       </if>
       <if test="updatedAt != null">
-        #{updatedAt,jdbcType=DATE},
+        #{updatedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
       <if test="startedAt != null">
-        #{startedAt,jdbcType=DATE},
+        #{startedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="endedAt != null">
-        #{endedAt,jdbcType=DATE},
+        #{endedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="localStartedAt != null">
-        #{localStartedAt,jdbcType=DATE},
+        #{localStartedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="localEndedAt != null">
-        #{localEndedAt,jdbcType=DATE},
+        #{localEndedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="length != null">
         #{length,jdbcType=INTEGER},
@@ -192,25 +192,25 @@
         uuid = #{record.uuid,jdbcType=VARCHAR},
       </if>
       <if test="record.createdAt != null">
-        created_at = #{record.createdAt,jdbcType=DATE},
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updatedAt != null">
-        updated_at = #{record.updatedAt,jdbcType=DATE},
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.startedAt != null">
-        started_at = #{record.startedAt,jdbcType=DATE},
+        started_at = #{record.startedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.endedAt != null">
-        ended_at = #{record.endedAt,jdbcType=DATE},
+        ended_at = #{record.endedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.localStartedAt != null">
-        local_started_at = #{record.localStartedAt,jdbcType=DATE},
+        local_started_at = #{record.localStartedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.localEndedAt != null">
-        local_ended_at = #{record.localEndedAt,jdbcType=DATE},
+        local_ended_at = #{record.localEndedAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.length != null">
         length = #{record.length,jdbcType=INTEGER},
@@ -229,13 +229,13 @@
   <update id="updateByExample" parameterType="map">
     update pomos
     set uuid = #{record.uuid,jdbcType=VARCHAR},
-      created_at = #{record.createdAt,jdbcType=DATE},
-      updated_at = #{record.updatedAt,jdbcType=DATE},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       description = #{record.description,jdbcType=VARCHAR},
-      started_at = #{record.startedAt,jdbcType=DATE},
-      ended_at = #{record.endedAt,jdbcType=DATE},
-      local_started_at = #{record.localStartedAt,jdbcType=DATE},
-      local_ended_at = #{record.localEndedAt,jdbcType=DATE},
+      started_at = #{record.startedAt,jdbcType=TIMESTAMP},
+      ended_at = #{record.endedAt,jdbcType=TIMESTAMP},
+      local_started_at = #{record.localStartedAt,jdbcType=TIMESTAMP},
+      local_ended_at = #{record.localEndedAt,jdbcType=TIMESTAMP},
       length = #{record.length,jdbcType=INTEGER},
       abandoned = #{record.abandoned,jdbcType=BIT},
       manual = #{record.manual,jdbcType=BIT}
