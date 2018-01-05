@@ -11,3 +11,6 @@ create table pomos(
    abandoned tinyint(1) NOT NULL,
    manual tinyint(1) NOT NULL	
 );
+
+ALTER TABLE pomos
+ADD PRIMARY KEY(uuid);

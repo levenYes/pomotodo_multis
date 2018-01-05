@@ -61,8 +61,8 @@ public class UrlService {
                 if (in != null) {
                     in.close();
                 }
-            } catch (Exception e2) {
-                e2.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         return result;
@@ -98,11 +98,8 @@ public class UrlService {
             String strLocalEndedAt = pomos.getLocal_ended_at();
             Date dateLocalEndedAt = convertDate(strLocalEndedAt);
             pomos.setLocalEndedAt(dateLocalEndedAt);
-            System.out.println(pomos.getCreatedAt());
-            result.add(pomos);
-        }
-        for (int i = 0; i< 10 ; i++){
-           pomosMapper.insert(result.get(i));
+            //insert
+            pomosMapper.insert(pomos);
         }
     }
 
@@ -116,5 +113,9 @@ public class UrlService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    boolean checkInDatabase(Pomos pomos){
+        return false;
     }
 }

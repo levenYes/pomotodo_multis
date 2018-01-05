@@ -101,10 +101,14 @@
       description, started_at, ended_at, 
       local_started_at, local_ended_at, length, 
       abandoned, manual)
-    values (#{uuid,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, 
+    select #{uuid,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP},
       #{description,jdbcType=VARCHAR}, #{startedAt,jdbcType=TIMESTAMP}, #{endedAt,jdbcType=TIMESTAMP}, 
       #{localStartedAt,jdbcType=TIMESTAMP}, #{localEndedAt,jdbcType=TIMESTAMP}, #{length,jdbcType=INTEGER}, 
-      #{abandoned,jdbcType=BIT}, #{manual,jdbcType=BIT})
+      #{abandoned,jdbcType=BIT}, #{manual,jdbcType=BIT}
+      <!--
+      from pomos a where not exists
+        (select null from pomos b where b.uuid = #{uuid,jdbcType=VARCHAR})
+        -->
   </insert>
   <insert id="insertSelective" parameterType="cn.liwenye.bean.Pomos">
     insert into pomos
