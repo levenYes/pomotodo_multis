@@ -51,9 +51,15 @@ public class BaseTest {
                 }
             }
         }
+        pomosMapper.deleteDuplicatedRecord();
     }
     @Test
     public void test4(){
         booklistService.showBooklist();
+    }
+
+    @Test
+    public void test5(){
+        pomosMapper.deleteDuplicatedRecord();
     }
 }

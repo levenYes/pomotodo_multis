@@ -258,4 +258,9 @@
         group by description) as a
         order by a.ended_at DESC
   </select>
+  <update id="deleteDuplicatedRecord" statementType="CALLABLE" >
+    {
+    call delete_duplicated_record
+    }
+  </update>
 </mapper>

@@ -14,3 +14,5 @@
     1. 在[client]字段里加入default-character-set=utf8
     2. 在[mysqld]字段里加入character-set-server=utf8
     3. 在[mysql]字段里加入default-character-set=utf8
+
+7. 调用存储过程，不要带分号‘；’
