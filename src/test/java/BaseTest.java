@@ -1,6 +1,7 @@
 import cn.liwenye.PomotodoServerApplication;
 import cn.liwenye.dao.PomosMapper;
 import cn.liwenye.service.BooklistService;
+import cn.liwenye.service.ImportHistoryService;
 import cn.liwenye.service.UrlService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,9 @@ public class BaseTest {
     @Autowired
     private PomosMapper pomosMapper;
 
+    @Autowired
+    ImportHistoryService importHistoryService;
+
     @Test
     public void test1(){
         String url = "https://api.pomotodo.com/1/account";
@@ -40,18 +44,11 @@ public class BaseTest {
 
     @Test
     public void test3(){
-        String url = "";
-        for(int i = 2016; i < 2019; i ++){
-            for(int j = 1; j < 13; j++){
-                for (int k = 5; k < 26; k = k + 10){
-                    String baseUrl = "https://api.pomotodo.com/1/pomos?offset=0&limit=100&abandoned=false&manual=false&started_later_than=";
-                    url = baseUrl + i +"/" + j + "/" + k;
-                    String data = urlService.sendGet(url);
-                    urlService.importData(data);
-                }
-            }
-        }
-        pomosMapper.deleteDuplicatedRecord();
+        long beginTime = System.currentTimeMillis();
+        importHistoryService.importHistory();
+        long endTime=System.currentTimeMillis();
+        long costTime = (endTime - beginTime);
+        System.out.println("消耗时间为：" +costTime/1000 + "秒");
     }
     @Test
     public void test4(){
@@ -60,6 +57,10 @@ public class BaseTest {
 
     @Test
     public void test5(){
+        long beginTime = System.currentTimeMillis();
         pomosMapper.deleteDuplicatedRecord();
+        long endTime=System.currentTimeMillis();
+        long costTime = (endTime - beginTime);
+        System.out.println("消耗时间为：" +costTime/1000 + "秒");
     }
 }
