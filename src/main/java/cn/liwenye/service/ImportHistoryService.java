@@ -24,7 +24,7 @@ public class ImportHistoryService {
                     String baseUrl = "https://api.pomotodo.com/1/pomos?offset=0&limit=100&abandoned=false&manual=false&started_later_than=";
                     url = baseUrl + i +"/" + j + "/" + k;
                     String data = urlService.sendGet(url);
-                    urlService.importData(data);
+                    //urlService.importData(data);
                 }
             }
         }
