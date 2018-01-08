@@ -50,6 +50,7 @@ public class BaseTest {
         long costTime = (endTime - beginTime);
         System.out.println("消耗时间为：" +costTime/1000 + "秒");
     }
+
     @Test
     public void test4(){
         booklistService.showBooklist();
@@ -59,6 +60,15 @@ public class BaseTest {
     public void test5(){
         long beginTime = System.currentTimeMillis();
         pomosMapper.deleteDuplicatedRecord();
+        long endTime=System.currentTimeMillis();
+        long costTime = (endTime - beginTime);
+        System.out.println("消耗时间为：" +costTime/1000 + "秒");
+    }
+
+    @Test
+    public void test6(){
+        long beginTime = System.currentTimeMillis();
+        importHistoryService.importHistoryByMutiltyThread();
         long endTime=System.currentTimeMillis();
         long costTime = (endTime - beginTime);
         System.out.println("消耗时间为：" +costTime/1000 + "秒");
