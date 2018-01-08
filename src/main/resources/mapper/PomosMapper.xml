@@ -14,6 +14,10 @@
     <result column="abandoned" jdbcType="BIT" property="abandoned" />
     <result column="manual" jdbcType="BIT" property="manual" />
   </resultMap>
+  <resultMap id="BooklistResultMap" type="cn.liwenye.bean.Booklist">
+    <result column="description" jdbcType="VARCHAR" property="book" />
+    <result column="ended_at" jdbcType="TIMESTAMP" property="lastDay" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -247,4 +251,11 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  <select id="selectBooklist"  resultMap="BooklistResultMap">
+    select * from
+      (select description,max(ended_at) as ended_at from pomotodo.pomos
+        where description like '%阅读%《%'
+        group by description) as a
+        order by a.ended_at DESC
+  </select>
 </mapper>

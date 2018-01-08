@@ -13,7 +13,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +68,6 @@ public class UrlService {
     }
 
     public void importData(String data){
-        List<Pomos> result = new ArrayList<Pomos>();
         JSONArray array = JSONArray.fromObject(data);
         for (int i = 0; i < array.size(); i++) {
             JSONObject object = array.getJSONObject(i);
