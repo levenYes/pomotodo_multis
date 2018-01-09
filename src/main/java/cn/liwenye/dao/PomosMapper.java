@@ -1,10 +1,10 @@
 package cn.liwenye.dao;
 
 import cn.liwenye.bean.Booklist;
+import cn.liwenye.bean.LastRecord;
 import cn.liwenye.bean.Pomos;
 import cn.liwenye.bean.PomosExample;
 
-import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,4 +26,6 @@ public interface PomosMapper {
     List<Booklist> selectBooklist();
 
     void deleteDuplicatedRecord();
+
+    LastRecord selectLastRecord();
 }

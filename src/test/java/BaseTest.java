@@ -68,7 +68,7 @@ public class BaseTest {
     @Test
     public void test6(){
         long beginTime = System.currentTimeMillis();
-        importHistoryService.importHistoryByMutiltyThread();
+        importHistoryService.importHistoryByMultiThread();
         long endTime=System.currentTimeMillis();
         long costTime = (endTime - beginTime);
         System.out.println("消耗时间为：" +costTime/1000 + "秒");

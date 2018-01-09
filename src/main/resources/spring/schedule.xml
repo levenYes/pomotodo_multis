@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+           <bean id="settleScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="triggers">
+				<list>
+					<ref bean="taskInsertNewRecordTrigger"/>
+				</list>
+			</property>
+			<property name="quartzProperties">
+	            <props>
+	                <prop key="org.quartz.scheduler.instanceName">SettleScheduler</prop>
+					<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+					<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
+					<prop key="org.quartz.threadPool.threadCount">20</prop>
+					<prop key="org.quartz.threadPool.threadPriority">5</prop>
+					<prop key="org.quartz.jobStore.misfireThreshold">120000</prop>
+	            </props>
+	        </property>
+			<property name="jobFactory" ref="customJobFactory"></property>
+			   <!-- 启动时延期1分开始任务 -->
+        	<property name="startupDelay" value="10" />
+        	<property name="autoStartup" value="true" />
+        	<!-- <property name="transactionManager" ref="transactionManager" />  -->
+		</bean>
+
+	<!--账户详情对账-->
+	<bean id="taskInsertNewRecordTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" scope="prototype">
+		<property name="jobDetail">
+			<bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+				<property name="jobClass" value="cn.liwenye.schedule.TaskInsertNewRecord"/>
+				<property name="beanName" value="taskInsertNewRecord"/>
+			</bean>
+		</property>
+		<!-- 触发规则 -->
+		<property name="cronExpression" value="0/45 * * * * ? *" />
+		<property name="group" value="pomotodo" />
+	</bean>
+		<!-- 
+	          附：cronExpression配置说明 
+	
+		字段   允许值   允许的特殊字符 
+		秒    0-59    , - * / 
+		分    0-59    , - * / 
+		小时    0-23    , - * / 
+		日期    1-31    , - * ? / L W C 
+		月份    1-12 或者 JAN-DEC    , - * / 
+		星期    1-7 或者 SUN-SAT    , - * ? / L C # 
+		年（可选）    留空, 1970-2099    , - * / 
+		
+		
+		这里特殊字符说明： 
+		
+		1.逗号[,]的作用,用于分隔字符,如秒1,10,59 这是在1秒、10秒、59秒时触发。 
+		
+		2.横线[-]的作用,用于表示多少至多少,如秒1-20 这是在1到20之间每秒都触发。 
+		
+		3.星号
+		•的作用,用于表示忽略本项,如秒* 这样在整个表达式中将不把秒做为条件。 
+		
+		4.斜线[/]的作用,用于表示倍数累加,如秒5/15 这是在5,20,35,50时触发。 
+		
+		5.问号[?],只能用在日期和星期，因为两者之间有一个相同性，例如星期一，在日期表达中是20号，这样在进行cron计算时会有问题,因此可以使用?号,把其中的一个屏蔽掉。例如 * * * ? * 1 表示为每星一触发。 
+		
+		表达式 意义 
+		"0 22  2  ? * 3" 每周三晚上2：22触发
+		"0 0   12 * * ?" 每天中午12点触发 
+		"0 15  10 ? * *" 每天上午10:15触发 
+		"0 15  10 * * ?" 每天上午10:15触发 
+		"0 15  10 * * ? *" 每天上午10:15触发 
+		"0 15  10 * * ? 2005" 2005年的每天上午10:15触发 
+		"0 *   14 * * ?" 在每天下午2点到下午2:59期间的每1分钟触发 
+		"0 0/5 14 * * ?" 在每天下午2点到下午2:55期间的每5分钟触发 
+		"0 0/5 14,18 * * ?" 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 
+		"0 0-5 14 * * ?" 在每天下午2点到下午2:05期间的每1分钟触发 
+		"0 10,44 14 ? 3 WED" 每年三月的星期三的下午2:10和2:44触发 
+		"0 15 10 ? * MON-FRI" 周一至周五的上午10:15触发 
+		"0 15 10 15 * ?" 每月15日上午10:15触发 
+		"0 15 10 L * ?" 每月最后一日的上午10:15触发 
+		"0 15 10 ? * 6L" 每月的最后一个星期五上午10:15触发 		        
+        -->
+</beans>

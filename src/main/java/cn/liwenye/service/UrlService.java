@@ -70,9 +70,11 @@ public class UrlService {
 
     public void importData(String data){
         JSONArray array = JSONArray.fromObject(data);
+        JSONObject object;
+        Pomos pomos;
         for (int i = 0; i < array.size(); i++) {
-            JSONObject object = array.getJSONObject(i);
-            Pomos pomos = (Pomos) JSONObject.toBean(object, Pomos.class);
+            object = array.getJSONObject(i);
+            pomos = (Pomos) JSONObject.toBean(object, Pomos.class);
             //created_at
             String strCreatedAt = pomos.getCreated_at();
             Date dateCreatedAt = DateUtil.convertDate(strCreatedAt);

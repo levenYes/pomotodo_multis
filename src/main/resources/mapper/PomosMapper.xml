@@ -18,6 +18,9 @@
     <result column="description" jdbcType="VARCHAR" property="book" />
     <result column="ended_at" jdbcType="TIMESTAMP" property="lastDay" />
   </resultMap>
+  <resultMap id="LastRecordResultMap" type="cn.liwenye.bean.LastRecord">
+    <result column="date_of_last_record" jdbcType="TIMESTAMP" property="dateOfLastRecord" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -263,4 +266,8 @@
     call delete_duplicated_record
     }
   </update>
+  <select id="selectLastRecord"  resultMap="LastRecordResultMap">
+    select max(local_ended_at) as date_of_last_record
+    from pomos
+  </select>
 </mapper>

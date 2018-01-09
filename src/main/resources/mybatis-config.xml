@@ -13,7 +13,7 @@
                 <property name="" value=""/>
             </transactionManager>
             <dataSource type="UNPOOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://120.78.83.144:3306/pomotodo"/>
                 <property name="username" value="root"/>
                 <property name="password" value="liwenye"/>
