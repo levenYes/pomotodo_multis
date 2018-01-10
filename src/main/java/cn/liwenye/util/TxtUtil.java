@@ -89,14 +89,14 @@ public class TxtUtil {
 		}
 	}
 
-	public static void initMdConent(List<String> mdContent) {
+	public static void initMdContent(List<String> mdContent) {
 		mdContent.add("---");
 		mdContent.add("title: 阅读清单");
 		mdContent.add("date: 2018/01/08");
 		mdContent.add("categories: 定时任务生成");
 		mdContent.add("---");
 		mdContent.add(" ");
-		mdContent.add("作为pomotodo的重度用户，从16年8月底开始，几乎每一次阅读都会用这个应用记录下来。" +
+		mdContent.add("作为番茄土豆的重度用户，从16年8月底开始，几乎每一次阅读都会用这个应用记录下来。" +
 				"利用API接口和定时任务拉取历史记录，抽取每一本书的最后一条记录。" +
 				"这样就可以看到都看过哪些书、每本书的上一次阅读是在哪一天。" +
 				"利用这些数据，试图更好地安排接下来的阅读计划。" +

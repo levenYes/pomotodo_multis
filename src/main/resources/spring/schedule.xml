@@ -6,6 +6,7 @@
 			<property name="triggers">
 				<list>
 					<ref bean="taskImportNewRecordTrigger"/>
+					<ref bean="taskGenerateBookListTrigger"/>
 				</list>
 			</property>
 			<property name="quartzProperties">
@@ -22,10 +23,9 @@
 			   <!-- 启动时延期1分开始任务 -->
         	<property name="startupDelay" value="10" />
         	<property name="autoStartup" value="true" />
-        	<!-- <property name="transactionManager" ref="transactionManager" />  -->
 		</bean>
 
-	<!--账户详情对账-->
+	<!--导入新的番茄记录-->
 	<bean id="taskImportNewRecordTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" scope="prototype">
 		<property name="jobDetail">
 			<bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
@@ -33,8 +33,21 @@
 				<property name="beanName" value="taskInsertNewRecord"/>
 			</bean>
 		</property>
-		<!-- 触发规则 -->
+		<!-- 触发规则 （每45秒跑一次）-->
 		<property name="cronExpression" value="0/45 * * * * ? *" />
+		<property name="group" value="pomotodo" />
+	</bean>
+
+	<!--生成阅读记录-->
+	<bean id="taskGenerateBookListTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" scope="prototype">
+		<property name="jobDetail">
+			<bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+				<property name="jobClass" value="cn.liwenye.schedule.TaskGenerateBookList"/>
+				<property name="beanName" value="taskGenerateBookList"/>
+			</bean>
+		</property>
+		<!-- 触发规则 （每55秒跑一次）-->
+		<property name="cronExpression" value="0/55 * * * * ? *" />
 		<property name="group" value="pomotodo" />
 	</bean>
 		<!-- 

@@ -17,15 +17,16 @@ import java.util.List;
  * @author liwenye on 2018/01/08
  */
 @Service
-public class BooklistService {
+public class BookListService {
+
     @Autowired
     PomosMapper pomosMapper;
 
-    public void showBooklist(){
+    public void showBookList(String pathname){
         List<Booklist> booklist = pomosMapper.selectBooklist();
         String subTitle = "";
         List<String> mdContent = new ArrayList<String>(16);
-        TxtUtil.initMdConent(mdContent);
+        TxtUtil.initMdContent(mdContent);
         for(int i = 0; i<booklist.size(); i++){
             String book = booklist.get(i).getBook();
             Date date =booklist.get(i).getLastDay();
@@ -34,18 +35,15 @@ public class BooklistService {
             String yearAndMonth = lastDate.substring(0,7);
             if(!subTitle.equals(yearAndMonth)){
                 subTitle = yearAndMonth;
-                System.out.println("## "+subTitle);
                 String titleRow = "## " + subTitle;
                 mdContent.add(titleRow);
             }
-            System.out.println("book name: "+ StrUtil.getBookName(book)
-                    +"       last day: "+lastDate);
             String contentRow = "book name: "+ StrUtil.getBookName(book)
                     +"       last day: "+lastDate;
             mdContent.add(contentRow);
         }
         //打开预设文件
-        File mdFile = new File("D:\\\\file\\\\test.md");
+        File mdFile = new File(pathname);
         TxtUtil.writeTxt(mdFile,mdContent);
     }
 }
