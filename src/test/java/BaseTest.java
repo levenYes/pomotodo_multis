@@ -2,6 +2,7 @@ import cn.liwenye.PomotodoServerApplication;
 import cn.liwenye.dao.PomosMapper;
 import cn.liwenye.service.BooklistService;
 import cn.liwenye.service.ImportHistoryService;
+import cn.liwenye.service.InsertNewRecordService;
 import cn.liwenye.service.UrlService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +29,9 @@ public class BaseTest {
     @Autowired
     ImportHistoryService importHistoryService;
 
+    @Autowired
+    InsertNewRecordService insertNewRecordService;
+
     @Test
     public void test1(){
         String url = "https://api.pomotodo.com/1/account";
@@ -37,8 +41,9 @@ public class BaseTest {
 
     @Test
     public void test2(){
-        String url = "https://api.pomotodo.com/1/pomos?offset=5&limit=100&abandoned=false&manual=false&started_earlier_than=2017/12/01";
+        String url = "https://api.pomotodo.com/1/pomos?offset=0&limit=1&abandoned=false&manual=false&started_later_than=2018/01/08";
         String data = urlService.sendGet(url);
+        System.out.println(data);
         urlService.importData(data);
     }
 
@@ -72,5 +77,10 @@ public class BaseTest {
         long endTime=System.currentTimeMillis();
         long costTime = (endTime - beginTime);
         System.out.println("消耗时间为：" +costTime/1000 + "秒");
+    }
+
+    @Test
+    public void test7(){
+        insertNewRecordService.update();
     }
 }
