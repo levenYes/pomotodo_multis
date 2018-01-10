@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class HelloController {
     @Autowired
-    UrlService urlService;
+    HttpService HttpService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/hello")
     public String hello() {
@@ -26,7 +26,7 @@ public class HelloController {
         String result;
         String url;
         url = (String)req.getSession().getAttribute("url");
-        result = urlService.sendGet(url);
+        result = HttpService.sendGet(url);
         return result;
     }
 }

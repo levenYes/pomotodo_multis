@@ -5,7 +5,7 @@
            <bean id="settleScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 			<property name="triggers">
 				<list>
-					<ref bean="taskInsertNewRecordTrigger"/>
+					<ref bean="taskImportNewRecordTrigger"/>
 				</list>
 			</property>
 			<property name="quartzProperties">
@@ -26,10 +26,10 @@
 		</bean>
 
 	<!--账户详情对账-->
-	<bean id="taskInsertNewRecordTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" scope="prototype">
+	<bean id="taskImportNewRecordTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" scope="prototype">
 		<property name="jobDetail">
 			<bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-				<property name="jobClass" value="cn.liwenye.schedule.TaskInsertNewRecord"/>
+				<property name="jobClass" value="cn.liwenye.schedule.TaskImportNewRecord"/>
 				<property name="beanName" value="taskInsertNewRecord"/>
 			</bean>
 		</property>

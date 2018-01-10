@@ -2,7 +2,6 @@ package cn.liwenye.service;
 
 import cn.liwenye.bean.LastRecord;
 import cn.liwenye.dao.PomosMapper;
-import cn.liwenye.handler.ApiHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,9 @@ import java.util.Date;
  * @author liwenye on 2018/01/09
  */
 @Service
-public class InsertNewRecordService {
+public class ImportNewRecordService {
     @Autowired
-    UrlService urlService;
+    HttpService HttpService;
 
     @Autowired
     PomosMapper pomosMapper;
@@ -40,8 +39,8 @@ public class InsertNewRecordService {
         }
         String lastDay = sf.format(dayOfLastRecord);
         url = baseUrl + lastDay;
-        String data = urlService.sendGet(url);
-        urlService.importData(data);
+        String data = HttpService.sendGet(url);
+        HttpService.importData(data);
         pomosMapper.deleteDuplicatedRecord();
     }
 }

@@ -29,7 +29,7 @@ public class BooklistService {
         for(int i = 0; i<booklist.size(); i++){
             String book = booklist.get(i).getBook();
             Date date =booklist.get(i).getLastDay();
-            String lastDate = "";
+            String lastDate;
             lastDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
             String yearAndMonth = lastDate.substring(0,7);
             if(!subTitle.equals(yearAndMonth)){

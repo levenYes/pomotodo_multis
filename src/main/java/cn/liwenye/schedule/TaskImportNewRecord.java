@@ -1,6 +1,6 @@
 package cn.liwenye.schedule;
 
-import cn.liwenye.service.InsertNewRecordService;
+import cn.liwenye.service.ImportNewRecordService;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,10 @@ import org.springframework.stereotype.Component;
  * 插入新数据定时任务类
  */
 @Component
-public class TaskInsertNewRecord extends QuartzJobBean {
+public class TaskImportNewRecord extends QuartzJobBean {
 
-    //private InsertNewRecordService insertNewRecordService = SpringContextUtil.getBean(InsertNewRecordService.class);
     @Autowired
-    InsertNewRecordService insertNewRecordService;
+    ImportNewRecordService importNewRecordService;
 
     @Override
     protected void executeInternal(JobExecutionContext context)
@@ -30,6 +29,6 @@ public class TaskInsertNewRecord extends QuartzJobBean {
     }
 
     public void insert() throws Exception {
-        insertNewRecordService.update();
+        importNewRecordService.update();
     }
 }
