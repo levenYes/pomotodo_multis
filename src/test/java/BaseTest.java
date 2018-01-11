@@ -1,9 +1,7 @@
 import cn.liwenye.PomotodoServerApplication;
 import cn.liwenye.dao.PomosMapper;
-import cn.liwenye.service.BooklistService;
-import cn.liwenye.service.ImportHistoryService;
-import cn.liwenye.service.ImportNewRecordService;
-import cn.liwenye.service.HttpService;
+import cn.liwenye.service.*;
+import com.aliyuncs.exceptions.ClientException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ public class BaseTest {
     HttpService HttpService;
 
     @Autowired
-    BooklistService booklistService;
+    BookListService bookListService;
 
     @Autowired
     private PomosMapper pomosMapper;
@@ -31,6 +29,9 @@ public class BaseTest {
 
     @Autowired
     ImportNewRecordService importNewRecordService;
+
+    @Autowired
+    SmsService smsService;
 
     @Test
     public void test1(){
@@ -58,7 +59,7 @@ public class BaseTest {
 
     @Test
     public void test4(){
-        booklistService.showBooklist();
+        bookListService.showBookList("D:\\\\file\\\\test.md");
     }
 
     @Test
@@ -73,5 +74,16 @@ public class BaseTest {
     @Test
     public void test7(){
         importNewRecordService.update();
+    }
+
+    @Test
+    public void test8() {
+        try {
+            smsService.sendSmsTest();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
