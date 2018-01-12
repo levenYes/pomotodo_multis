@@ -32,7 +32,7 @@ public class SmsService {
      */
     static final String DOMAIN = "dysmsapi.aliyuncs.com";
 
-    static final String ACCESS_KEY_ID = "LTAI8GnEDLD1eAjY1";
+    static final String ACCESS_KEY_ID = "LTAI8GnEDLD1eAjY";
 
     static final String ACCESS_KEY_SECRET = "5OntQLGjP7D898YS66gi2B2BPAVQQs";
 
@@ -55,7 +55,8 @@ public class SmsService {
         request.setSignName("思考笔记");
         //必填:短信模板-可在短信控制台中找到
         request.setTemplateCode("SMS_121910029");
-        request.setTemplateParam("{ \"code\":\"123456\"}");
+        //可选:验证码
+        request.setTemplateParam("{ \"code\":\""+123456+"\"}");
 
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
 

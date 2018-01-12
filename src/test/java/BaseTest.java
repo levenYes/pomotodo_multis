@@ -77,7 +77,7 @@ public class BaseTest {
     }
 
     @Test
-    public void test8() {
+    public void testSendSms() {
         try {
             smsService.sendSmsTest();
         } catch (ClientException e) {

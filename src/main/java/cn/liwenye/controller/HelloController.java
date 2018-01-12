@@ -18,15 +18,7 @@ public class HelloController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/hello")
     public String hello() {
-        return "hello";
+        return "action/bindBankCard";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/test")
-    public String test(HttpServletRequest req) {
-        String result;
-        String url;
-        url = (String)req.getSession().getAttribute("url");
-        result = HttpService.sendGet(url);
-        return result;
-    }
 }
