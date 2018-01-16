@@ -19,4 +19,11 @@ public class DateUtil {
         }
         return null;
     }
+
+    /**
+     *TODO
+     *
+     * 添加一个获取当前日期字符串的方法
+     *
+     */
 }
