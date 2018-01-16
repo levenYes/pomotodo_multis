@@ -10,6 +10,8 @@ public class Booklist {
 
     Date lastDay;
 
+    int totalPomos;
+
     public String getBook() {
         return book;
     }
@@ -25,4 +27,13 @@ public class Booklist {
     public void setLastDay(Date lastDay) {
         this.lastDay = lastDay;
     }
+
+    public int getTotalPomos() {
+        return totalPomos;
+    }
+
+    public void setTotalPomos(int totalPomos) {
+        this.totalPomos = totalPomos;
+    }
+
 }

@@ -5,8 +5,8 @@
            <bean id="settleScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 			<property name="triggers">
 				<list>
-					<!--<ref bean="taskImportNewRecordTrigger"/>
-					<ref bean="taskGenerateBookListTrigger"/>-->
+					<ref bean="taskImportNewRecordTrigger"/>
+					<ref bean="taskGenerateBookListTrigger"/>
 				</list>
 			</property>
 			<property name="quartzProperties">

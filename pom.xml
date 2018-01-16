@@ -106,19 +106,6 @@
             <version>4.3.3.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core -->
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>3.2.8</version>
-        </dependency>
-
     </dependencies>
     <build>
         <plugins>

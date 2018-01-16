@@ -30,6 +30,7 @@ public class BookListService {
         for(int i = 0; i<booklist.size(); i++){
             String book = booklist.get(i).getBook();
             Date date =booklist.get(i).getLastDay();
+            int totalPomos = booklist.get(i).getTotalPomos();
             String lastDate;
             lastDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
             String yearAndMonth = lastDate.substring(0,7);
@@ -39,7 +40,8 @@ public class BookListService {
                 mdContent.add(titleRow);
             }
             String contentRow = "book name: "+ StrUtil.getBookName(book)
-                    +"       last day: "+lastDate;
+                    +"       last day: "+lastDate
+                    +"       total pomos: "+ totalPomos;
             mdContent.add(contentRow);
         }
         //打开预设文件

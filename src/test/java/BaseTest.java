@@ -1,7 +1,6 @@
 import cn.liwenye.PomotodoServerApplication;
 import cn.liwenye.dao.PomosMapper;
 import cn.liwenye.service.*;
-import com.aliyuncs.exceptions.ClientException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,6 @@ public class BaseTest {
 
     @Autowired
     ImportNewRecordService importNewRecordService;
-
-    @Autowired
-    SmsService smsService;
 
     @Test
     public void test1(){
@@ -76,14 +72,4 @@ public class BaseTest {
         importNewRecordService.update();
     }
 
-    @Test
-    public void testSendSms() {
-        try {
-            smsService.sendSmsTest();
-        } catch (ClientException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
