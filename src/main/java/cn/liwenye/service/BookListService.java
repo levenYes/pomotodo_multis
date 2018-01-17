@@ -31,6 +31,7 @@ public class BookListService {
             String book = booklist.get(i).getBook();
             Date date =booklist.get(i).getLastDay();
             int totalPomos = booklist.get(i).getTotalPomos();
+            double totalHours = totalPomos * 0.5;
             String lastDate;
             lastDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
             String yearAndMonth = lastDate.substring(0,7);
@@ -39,9 +40,9 @@ public class BookListService {
                 String titleRow = "## " + subTitle;
                 mdContent.add(titleRow);
             }
-            String contentRow = "book name: "+ StrUtil.getBookName(book)
-                    +"       last day: "+lastDate
-                    +"       total pomos: "+ totalPomos;
+            String contentRow = StrUtil.getBookName(book)
+                    + "       最近阅读: " + lastDate
+                    + "       累计用时: " + totalHours + "h";
             mdContent.add(contentRow);
         }
         //打开预设文件
