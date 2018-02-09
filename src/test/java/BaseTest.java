@@ -38,10 +38,10 @@ public class BaseTest {
 
     @Test
     public void test2(){
-        String url = "https://api.pomotodo.com/1/pomos?offset=0&limit=1&abandoned=false&manual=false&started_later_than=2018/01/08";
+        String url = "https://api.pomotodo.com/1/pomos?offset=0&limit=100&abandoned=false&manual=false&started_later_than=2018/01/08";
         String data = HttpService.sendGet(url);
         System.out.println(data);
-        HttpService.importData(data);
+        //HttpService.importData(data);
     }
 
     @Test

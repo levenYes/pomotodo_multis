@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pomotodo.iml" filepath="$PROJECT_DIR$/pomotodo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pomotodo_multis.iml" filepath="$PROJECT_DIR$/pomotodo_multis.iml" />
     </modules>
   </component>
 </project>

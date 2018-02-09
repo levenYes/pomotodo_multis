@@ -1,2 +1,2 @@
-# pomotodo
-利用pomotodo提供的API，做一个小项目
+# pomotodo_multis
+在原有个人项目pomotodo的基础上进行改造，可以用于多账号
